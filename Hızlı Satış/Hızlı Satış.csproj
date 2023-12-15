@@ -1,0 +1,907 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit.3.13.3\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.13.3\build\NUnit.props')" />
+  <Import Project="..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6CBB10F3-0CA4-44E0-8756-4AC8C8830FB7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Hızlı_Satış</RootNamespace>
+    <AssemblyName>Hızlı Satış</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Costura, Version=5.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Costura.Fody.5.7.0\lib\netstandard1.0\Costura.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.21.9.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.21.9\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2, Version=2.0.4.4, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.4\lib\net48\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.3.5.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.3.5\lib\net462\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.3.5.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.3.5\lib\net462\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.33.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.33\lib\net48\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.13.3.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.13.3\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.AppContext, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.AppContext.4.3.0\lib\net463\System.AppContext.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.3.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tracing, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.Tracing.4.3.0\lib\net462\System.Diagnostics.Tracing.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Globalization.Calendars, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Globalization.Calendars.4.3.0\lib\net46\System.Globalization.Calendars.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq.Expressions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Expressions.4.3.0\lib\net463\System.Linq.Expressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.0\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.4.3.0\lib\net462\System.Reflection.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.4.3.0\lib\net463\System.Runtime.InteropServices.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.RegularExpressions.4.3.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\AppData.cs" />
+    <Compile Include="Classes\DataClasses\PosKategori.cs" />
+    <Compile Include="Database\PosDAL.cs" />
+    <Compile Include="Database\UserDAL.cs" />
+    <Compile Include="Engines\AppEngine.cs" />
+    <Compile Include="Engines\DatabaseEngine.cs" />
+    <Compile Include="Engines\FormEngine.cs" />
+    <Compile Include="Engines\MessageEngine.cs" />
+    <Compile Include="Engines\StartControl.cs" />
+    <Compile Include="Engines\TimeEngine.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\Edit\KisayolDuzenleFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\Edit\KisayolDuzenleFrm.Designer.cs">
+      <DependentUpon>KisayolDuzenleFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\Edit\PosKategoriDuzenle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\Edit\PosKategoriDuzenle.Designer.cs">
+      <DependentUpon>PosKategoriDuzenle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HizliSatis\PosDefaultFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HizliSatis\PosDefaultFrm.Designer.cs">
+      <DependentUpon>PosDefaultFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\AyarlarFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\AyarlarFrm.Designer.cs">
+      <DependentUpon>AyarlarFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\BelgeDizaynFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\BelgeDizaynFrm.Designer.cs">
+      <DependentUpon>BelgeDizaynFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\BelgelerFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\BelgelerFrm.Designer.cs">
+      <DependentUpon>BelgelerFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\CariFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\CariFrm.Designer.cs">
+      <DependentUpon>CariFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\KasaFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\KasaFrm.Designer.cs">
+      <DependentUpon>KasaFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\MenuFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\MenuFrm.Designer.cs">
+      <DependentUpon>MenuFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\RaporFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\RaporFrm.Designer.cs">
+      <DependentUpon>RaporFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\StokFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\StokFrm.Designer.cs">
+      <DependentUpon>StokFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\YedeklemeFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\YedeklemeFrm.Designer.cs">
+      <DependentUpon>YedeklemeFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Stok\BarkodUrunEkleFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Stok\BarkodUrunEkleFrm.Designer.cs">
+      <DependentUpon>BarkodUrunEkleFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Stok\KategoriEkleFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Stok\KategoriEkleFrm.Designer.cs">
+      <DependentUpon>KategoriEkleFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tool\FullKeyboardFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tool\FullKeyboardFrm.Designer.cs">
+      <DependentUpon>FullKeyboardFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tool\NumericKeyboardFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tool\NumericKeyboardFrm.Designer.cs">
+      <DependentUpon>NumericKeyboardFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\LoginFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\LoginFrm.Designer.cs">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\General.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>General.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\KeyboardColor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>KeyboardColor.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\KullanimAyarlari.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>KullanimAyarlari.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Shortcuts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Shortcuts.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Components\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\Forms\MessageForms\BackgroundFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\Forms\MessageForms\BackgroundFrm.Designer.cs">
+      <DependentUpon>BackgroundFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Forms\MessageForms\ErrorFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\Forms\MessageForms\ErrorFrm.Designer.cs">
+      <DependentUpon>ErrorFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Forms\MessageForms\InfoFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\Forms\MessageForms\InfoFrm.Designer.cs">
+      <DependentUpon>InfoFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Forms\MessageForms\SuccesFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\Forms\MessageForms\SuccesFrm.Designer.cs">
+      <DependentUpon>SuccesFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Forms\MessageForms\WarningFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\Forms\MessageForms\WarningFrm.Designer.cs">
+      <DependentUpon>WarningFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\BakimYedek.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\BakimYedek.Designer.cs">
+      <DependentUpon>BakimYedek.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\Cihazlar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\Cihazlar.Designer.cs">
+      <DependentUpon>Cihazlar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\Entegrasyon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\Entegrasyon.Designer.cs">
+      <DependentUpon>Entegrasyon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\FirmaSabitleri.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\FirmaSabitleri.Designer.cs">
+      <DependentUpon>FirmaSabitleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\Kullanicilar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\Kullanicilar.Designer.cs">
+      <DependentUpon>Kullanicilar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\KullanimAyarlari.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\KullanimAyarlari.Designer.cs">
+      <DependentUpon>KullanimAyarlari.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\LisansBilgileri.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\LisansBilgileri.Designer.cs">
+      <DependentUpon>LisansBilgileri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\PosEkrani.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\PosEkrani.Designer.cs">
+      <DependentUpon>PosEkrani.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\Sonislemler.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\Sonislemler.Designer.cs">
+      <DependentUpon>Sonislemler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\TemaAyari.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Ayarlar\TemaAyari.Designer.cs">
+      <DependentUpon>TemaAyari.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\BelgeDizayn\BelgeDizayn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\BelgeDizayn\BelgeDizayn.Designer.cs">
+      <DependentUpon>BelgeDizayn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Belgeler\Belgeler.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Belgeler\Belgeler.Designer.cs">
+      <DependentUpon>Belgeler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Cari\CariListesi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Cari\CariListesi.Designer.cs">
+      <DependentUpon>CariListesi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Cari\Carislem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Cari\Carislem.Designer.cs">
+      <DependentUpon>Carislem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Cari\Hizlislem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Cari\Hizlislem.Designer.cs">
+      <DependentUpon>Hizlislem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Cari\Rapor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Cari\Rapor.Designer.cs">
+      <DependentUpon>Rapor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Cari\YeniCariKarti.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Cari\YeniCariKarti.Designer.cs">
+      <DependentUpon>YeniCariKarti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\HizliSatis\PosKategori.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\HizliSatis\PosKategori.Designer.cs">
+      <DependentUpon>PosKategori.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Kasa\Kasa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Kasa\Kasa.Designer.cs">
+      <DependentUpon>Kasa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Rapor\Rapor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Rapor\Rapor.Designer.cs">
+      <DependentUpon>Rapor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Shotrcuts\ShortYeniUrunEkle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Shotrcuts\ShortYeniUrunEkle.Designer.cs">
+      <DependentUpon>ShortYeniUrunEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Stok\EtiketBarkod.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Stok\EtiketBarkod.Designer.cs">
+      <DependentUpon>EtiketBarkod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Stok\HizliRapor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Stok\HizliRapor.Designer.cs">
+      <DependentUpon>HizliRapor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Stok\Hizlislemler.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Stok\Hizlislemler.Designer.cs">
+      <DependentUpon>Hizlislemler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Stok\Sayimislemleri.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Stok\Sayimislemleri.Designer.cs">
+      <DependentUpon>Sayimislemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Stok\StokAktarim.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Stok\StokAktarim.Designer.cs">
+      <DependentUpon>StokAktarim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Stok\StokListesi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Stok\StokListesi.Designer.cs">
+      <DependentUpon>StokListesi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Stok\Stokİslemleri.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Stok\Stokİslemleri.Designer.cs">
+      <DependentUpon>Stokİslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Stok\YeniStokKarti.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Stok\YeniStokKarti.Designer.cs">
+      <DependentUpon>YeniStokKarti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UControls\Yedekleme\Yedekleme.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\Yedekleme\Yedekleme.Designer.cs">
+      <DependentUpon>Yedekleme.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Base\Edit\KisayolDuzenleFrm.resx">
+      <DependentUpon>KisayolDuzenleFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Base\Edit\PosKategoriDuzenle.resx">
+      <DependentUpon>PosKategoriDuzenle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HizliSatis\PosDefaultFrm.resx">
+      <DependentUpon>PosDefaultFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\AyarlarFrm.resx">
+      <DependentUpon>AyarlarFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\BelgeDizaynFrm.resx">
+      <DependentUpon>BelgeDizaynFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\BelgelerFrm.resx">
+      <DependentUpon>BelgelerFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\CariFrm.resx">
+      <DependentUpon>CariFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\KasaFrm.resx">
+      <DependentUpon>KasaFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\MenuFrm.resx">
+      <DependentUpon>MenuFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\RaporFrm.resx">
+      <DependentUpon>RaporFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\StokFrm.resx">
+      <DependentUpon>StokFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\YedeklemeFrm.resx">
+      <DependentUpon>YedeklemeFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Stok\BarkodUrunEkleFrm.resx">
+      <DependentUpon>BarkodUrunEkleFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Stok\KategoriEkleFrm.resx">
+      <DependentUpon>KategoriEkleFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tool\FullKeyboardFrm.resx">
+      <DependentUpon>FullKeyboardFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Tool\NumericKeyboardFrm.resx">
+      <DependentUpon>NumericKeyboardFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Base\LoginFrm.resx">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Tools\Forms\MessageForms\BackgroundFrm.resx">
+      <DependentUpon>BackgroundFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\Forms\MessageForms\ErrorFrm.resx">
+      <DependentUpon>ErrorFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\Forms\MessageForms\InfoFrm.resx">
+      <DependentUpon>InfoFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\Forms\MessageForms\SuccesFrm.resx">
+      <DependentUpon>SuccesFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\Forms\MessageForms\WarningFrm.resx">
+      <DependentUpon>WarningFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Ayarlar\BakimYedek.resx">
+      <DependentUpon>BakimYedek.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Ayarlar\Cihazlar.resx">
+      <DependentUpon>Cihazlar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Ayarlar\Entegrasyon.resx">
+      <DependentUpon>Entegrasyon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Ayarlar\FirmaSabitleri.resx">
+      <DependentUpon>FirmaSabitleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Ayarlar\Kullanicilar.resx">
+      <DependentUpon>Kullanicilar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Ayarlar\KullanimAyarlari.resx">
+      <DependentUpon>KullanimAyarlari.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Ayarlar\LisansBilgileri.resx">
+      <DependentUpon>LisansBilgileri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Ayarlar\PosEkrani.resx">
+      <DependentUpon>PosEkrani.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Ayarlar\Sonislemler.resx">
+      <DependentUpon>Sonislemler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Ayarlar\TemaAyari.resx">
+      <DependentUpon>TemaAyari.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\BelgeDizayn\BelgeDizayn.resx">
+      <DependentUpon>BelgeDizayn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Belgeler\Belgeler.resx">
+      <DependentUpon>Belgeler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Cari\CariListesi.resx">
+      <DependentUpon>CariListesi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Cari\Carislem.resx">
+      <DependentUpon>Carislem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Cari\Hizlislem.resx">
+      <DependentUpon>Hizlislem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Cari\Rapor.resx">
+      <DependentUpon>Rapor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Cari\YeniCariKarti.resx">
+      <DependentUpon>YeniCariKarti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\HizliSatis\PosKategori.resx">
+      <DependentUpon>PosKategori.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Kasa\Kasa.resx">
+      <DependentUpon>Kasa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Rapor\Rapor.resx">
+      <DependentUpon>Rapor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Shotrcuts\ShortYeniUrunEkle.resx">
+      <DependentUpon>ShortYeniUrunEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Stok\EtiketBarkod.resx">
+      <DependentUpon>EtiketBarkod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Stok\HizliRapor.resx">
+      <DependentUpon>HizliRapor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Stok\Hizlislemler.resx">
+      <DependentUpon>Hizlislemler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Stok\Sayimislemleri.resx">
+      <DependentUpon>Sayimislemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Stok\StokAktarim.resx">
+      <DependentUpon>StokAktarim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Stok\StokListesi.resx">
+      <DependentUpon>StokListesi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Stok\Stokİslemleri.resx">
+      <DependentUpon>Stokİslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Stok\YeniStokKarti.resx">
+      <DependentUpon>YeniStokKarti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\Yedekleme\Yedekleme.resx">
+      <DependentUpon>Yedekleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\General.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>General.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\KeyboardColor.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>KeyboardColor.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\KullanimAyarlari.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>KullanimAyarlari.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Shortcuts.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Shortcuts.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sposlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\person.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\company.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\belge.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\screennew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\counter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\barcode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\speed-report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\firmasabit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\person1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cihazlar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kullanımayar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sonislem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\api.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lisansbilgi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.6.5.5\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.5\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Bu proje bu bilgisayarda olmayan NuGet paketlerine başvuru yapıyor. Bunları indirmek için NuGet Paket Geri Yükleme'yi kullanın. Daha fazla bilgi için, bkz. http://go.microsoft.com/fwlink/?LinkID=322105. Eksik dosya: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.6.5.5\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.5.5\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props'))" />
+    <Error Condition="!Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\NUnit.3.13.3\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.13.3\build\NUnit.props'))" />
+  </Target>
+  <Import Project="..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" />
+</Project>

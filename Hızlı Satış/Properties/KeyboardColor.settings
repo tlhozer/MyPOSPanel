@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Hızlı_Satış.Properties" GeneratedClassName="KeyboardColor">
+  <Profiles />
+  <Settings>
+    <Setting Name="rakamrenk" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#1abc9c</Value>
+    </Setting>
+    <Setting Name="harfrenk" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#34495e</Value>
+    </Setting>
+    <Setting Name="digerrenk" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#e67e22</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
